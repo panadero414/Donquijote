@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, send_file
+from flask import Flask, request, jsonify, send_file, send_from_directory
 from flask_cors import CORS
 import os
 import asyncio
@@ -28,7 +28,8 @@ def voz():
 
 @app.route('/audio/<path:filename>')
 def audio(filename):
-    return send_file(f"audio/{filename}")
+    return send_from_directory("audio", filename)
+
 
 if __name__ == "__main__":
     # Render usará el puerto asignado en PORT, si existe
