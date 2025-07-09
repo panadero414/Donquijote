@@ -5,12 +5,12 @@ import asyncio
 import edge_tts
 
 app = Flask(__name__)
-CORS(app)  # Habilita CORS para todos los orígenes
+CORS(app, origins=["https://mintcream-elk-986360.hostingersite.com"])  # <- AQUI
 
 os.makedirs("audio", exist_ok=True)
 
 async def generar_audio(texto, archivo):
-    voice = "es-ES-AlvaroNeural"  # Puedes cambiar la voz aquí
+    voice = "es-ES-AlvaroNeural"
     communicate = edge_tts.Communicate(texto, voice)
     await communicate.save(archivo)
 
@@ -32,6 +32,6 @@ def audio(filename):
 
 
 if __name__ == "__main__":
-    # Render usará el puerto asignado en PORT, si existe
+
     port = int(os.environ.get("PORT", 3000))
     app.run(host="0.0.0.0", port=port)
