@@ -5,7 +5,7 @@ import asyncio
 import edge_tts
 
 app = Flask(__name__)
-CORS(app, origins=["https://mintcream-elk-986360.hostingersite.com"])  # <- AQUI
+CORS(app, origins=["https://mechrobotix.com"])
 
 os.makedirs("audio", exist_ok=True)
 
